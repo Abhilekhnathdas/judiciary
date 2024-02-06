@@ -63,6 +63,9 @@ pipe = Pipeline()
 pipe.add_node(component=retriever, name="retriever", inputs=["Query"])
 pipe.add_node(component=prompt_node, name="prompt_node", inputs=["retriever"])
 
+@app.route('/', methods=['GET'])
+def start():
+    return 'We are up'
 @app.route('/download/<filename>', methods=['GET'])
 def download_pdf(filename):
     file_path = os.path.join(pdf_docs_dir, filename)
